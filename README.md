@@ -13,7 +13,7 @@ Unfortunately, Dr Cranshaw allowed one of his lab assistants to use his computer
 ## Help us out
 No one has touched this class for a long time, and it's a bit of a mess. We need to:
 
-* fix the problems with the class so Dr Cranshaw can feed and exercise his
+* fix the problems with the class so Dr Cranshaw can feed and exercise his specimens
 * refactor the class so that the next person to come along is able to make sense of what it does.
 
 Please help!
