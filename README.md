@@ -15,6 +15,6 @@ No one has touched this class for a long time, and it's a bit of a mess. We need
 
 * fix the problems with the class so Dr Cranshaw can feed and exercise his specimens
 * refactor the class so that the next person to come along is able to make sense of what it does
-* add comments that describe any design patterns we used in our changes
+* add comments that describe any design patterns that were used in the changes
 
 Please help!
