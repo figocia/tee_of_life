@@ -1,3 +1,5 @@
+require_relative '../tree_of_life'
+
 describe TreeOfLife do
   let(:tree_of_life) { TreeOfLife.new('spec/fixtures/Life On Earth') }
 
@@ -5,31 +7,31 @@ describe TreeOfLife do
     subject(:in_group) { tree_of_life.in_group(phylum) }
 
     context 'matching case' do
-      let(:phylym) { 'Hexapoda' }
+      let(:phylum) { 'Hexapoda' }
       specify do
-        expect(in_group.first.name).to eq 'Ground beetle'
+        expect(in_group.first[:name]).to eq 'Ground beetle'
       end
     end
 
     context 'mismatching case' do
-      let(:phylym) { 'dionycha' }
+      let(:phylum) { 'dionycha' }
       specify do
-        expect(in_group.first.name).to eq 'American jumping spider'
+        expect(in_group.first[:name]).to eq 'American Jumping Spider'
       end
     end
 
     context 'all matching' do
-      let(:phylym) { 'Life on Earth' }
+      let(:phylum) { 'Life on Earth' }
       specify { expect(in_group.length).to eq 7 }
     end
 
     context 'none matching' do
-      let(:phylym) { 'Spice Girls' }
+      let(:phylum) { 'Spice Girls' }
       specify { expect(in_group.length).to eq 0 }
     end
 
     context 'defensive coding' do
-      let(:phylym) { nil }
+      let(:phylum) { nil }
       specify { expect(in_group.length).to eq 0 }
     end
   end
@@ -41,7 +43,7 @@ describe TreeOfLife do
       let(:food) { 'flies' }
       specify do
         expect(all_that_eat.length).to eq 2
-        names = all_that_eat.map(&:name)
+        names = all_that_eat.map{|hash| hash[:name]}
         expect(names).to include 'American Jumping Spider'
         expect(names).to include 'Dracula Ant'
       end
@@ -50,7 +52,6 @@ describe TreeOfLife do
     context 'no matching' do
       let(:food) { 'burgers' }
       specify { expect(all_that_eat.length).to eq 0 }
-      end
     end
 
     context 'defensive coding' do
@@ -60,19 +61,19 @@ describe TreeOfLife do
   end
 
   describe '#exercise_those_that' do
-    subject(:exercise_those_that) { tree_of_life.exercise_those_that(action) }
+    subject(:exercise_those_that) { tree_of_life.exercise_those_that(move) }
 
-    context 'multiple matching' do
+    context 'fly' do
       let(:move) { 'fly' }
       specify do
         expect(exercise_those_that).to match /Look in the sky!/
         expect(exercise_those_that).to match /The African Wattled Lapwing flies/
-        expect(exercise_those_that).to match /The Graytail flies/
+        expect(exercise_those_that).to match /The Greytail flies/
         expect(exercise_those_that).to match /The Josia Moth flies/
       end
     end
 
-    context 'multiple matching' do
+    context 'scuttle' do
       let(:move) { 'scuttle' }
       specify do
         expect(exercise_those_that).to match /Look on the ground!/
@@ -82,9 +83,25 @@ describe TreeOfLife do
       end
     end
 
+    context 'swim' do
+      let(:move) { 'swim' }
+      specify do
+        expect(exercise_those_that).to match /Look in the water!/
+        expect(exercise_those_that).to match /The Giant squid swims/
+      end
+    end
+
     context 'no matching' do
       let(:move) { 'skateboard' }
-      specify { expect(exercise_those_that).to be_nil }
+      specify do
+        result = "There are no life forms that skateboard\n"
+        expect(exercise_those_that).to eq result
+      end
+    end
+
+    context 'defensive coding' do
+      let(:move) { nil }
+      specify { expect(exercise_those_that).to eq '' }
     end
   end
 
@@ -94,9 +111,22 @@ describe TreeOfLife do
     context 'matching' do
       let(:species) { 'histioteuthis eltaninae' }
       specify do
-        expect(description).to eq 'The Giant Squid (histioteuthis eltaninae) ' \
-                                  'eats plankton, and swims'
+        expect(description).to eq 'The Giant squid (histioteuthis eltaninae) ' \
+                                  'eats plankton and swims'
       end
+    end
+
+    context 'no matching' do
+      let(:species) { 'humanicas dropkickus' }
+      specify do
+        result = 'The species humanicas dropkickus does not exist'
+        expect(description).to eq result
+      end
+    end
+
+    context 'defensive coding' do
+      let(:species) { nil }
+      specify { expect(description).to eq '' }
     end
   end
 end
