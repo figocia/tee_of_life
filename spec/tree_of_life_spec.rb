@@ -9,14 +9,14 @@ describe TreeOfLife do
     context 'matching case' do
       let(:phylum) { 'Hexapoda' }
       specify do
-        expect(in_group.first[:name]).to eq 'Ground beetle'
+        expect(in_group.first.name).to eq 'Ground beetle'
       end
     end
 
     context 'mismatching case' do
       let(:phylum) { 'dionycha' }
       specify do
-        expect(in_group.first[:name]).to eq 'American Jumping Spider'
+        expect(in_group.first.name).to eq 'American Jumping Spider'
       end
     end
 
@@ -42,8 +42,8 @@ describe TreeOfLife do
     context 'multiple matching' do
       let(:food) { 'flies' }
       specify do
-        expect(all_that_eat.length).to eq 2
-        names = all_that_eat.map{|hash| hash[:name]}
+        expect(all_that_eat.length).to eq 2        
+        names = all_that_eat.map{|life| life.name}
         expect(names).to include 'American Jumping Spider'
         expect(names).to include 'Dracula Ant'
       end
