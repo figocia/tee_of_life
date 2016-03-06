@@ -2,7 +2,7 @@ require 'pathname'
 
 class TreeOfLife
   def initialize(path)
-    self.files = %x[find '#{path}' -name '*.*'].split("\n")
+    self.files = %x[find '#{path}' -name '*.life'].split("\n")
   end
 
   def in_group(group)
@@ -59,8 +59,10 @@ class TreeOfLife
   attr_accessor :files
 
   def file_to_hash(file)
+    # require 'pry'; binding.pry
     contents = File.read(file).split("\n")
     {
+      
       species: File.basename(file).gsub('.life', '').gsub('_', ' '),
       name: contents[0].gsub('Name: ', ''),
       eats: contents[1].gsub('Eats: ', ''),
