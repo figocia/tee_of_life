@@ -60,73 +60,73 @@ describe TreeOfLife do
     end
   end
 
-  # describe '#exercise_those_that' do
-  #   subject(:exercise_those_that) { tree_of_life.exercise_those_that(move) }
+  describe '#exercise_those_that' do
+    subject(:exercise_those_that) { tree_of_life.exercise_those_that(move) }
 
-  #   context 'fly' do
-  #     let(:move) { 'fly' }
-  #     specify do
-  #       expect(exercise_those_that).to match /Look in the sky!/
-  #       expect(exercise_those_that).to match /The African Wattled Lapwing flies/
-  #       expect(exercise_those_that).to match /The Greytail flies/
-  #       expect(exercise_those_that).to match /The Josia Moth flies/
-  #     end
-  #   end
+    context 'fly' do
+      let(:move) { 'fly' }
+      specify do
+        expect(exercise_those_that).to match /Look in the sky!/
+        expect(exercise_those_that).to match /The African Wattled Lapwing flies/
+        expect(exercise_those_that).to match /The Greytail flies/
+        expect(exercise_those_that).to match /The Josia Moth flies/
+      end
+    end
 
-  #   context 'scuttle' do
-  #     let(:move) { 'scuttle' }
-  #     specify do
-  #       expect(exercise_those_that).to match /Look on the ground!/
-  #       expect(exercise_those_that).to match /The American Jumping Spider scuttles/
-  #       expect(exercise_those_that).to match /The Ground beetle scuttles/
-  #       expect(exercise_those_that).to match /The Dracula Ant scuttles/
-  #     end
-  #   end
+    context 'scuttle' do
+      let(:move) { 'scuttle' }
+      specify do
+        expect(exercise_those_that).to match /Look on the ground!/
+        expect(exercise_those_that).to match /The American Jumping Spider scuttles/
+        expect(exercise_those_that).to match /The Ground beetle scuttles/
+        expect(exercise_those_that).to match /The Dracula Ant scuttles/
+      end
+    end
 
-  #   context 'swim' do
-  #     let(:move) { 'swim' }
-  #     specify do
-  #       expect(exercise_those_that).to match /Look in the water!/
-  #       expect(exercise_those_that).to match /The Giant squid swims/
-  #     end
-  #   end
+    context 'swim' do
+      let(:move) { 'swim' }
+      specify do
+        expect(exercise_those_that).to match /Look in the water!/
+        expect(exercise_those_that).to match /The Giant squid swims/
+      end
+    end
 
-  #   context 'no matching' do
-  #     let(:move) { 'skateboard' }
-  #     specify do
-  #       result = "There are no life forms that skateboard\n"
-  #       expect(exercise_those_that).to eq result
-  #     end
-  #   end
+    context 'no matching' do
+      let(:move) { 'skateboard' }
+      specify do
+        result = "There are no life forms that skateboard\n"
+        expect(exercise_those_that).to eq result
+      end
+    end
 
-  #   context 'defensive coding' do
-  #     let(:move) { nil }
-  #     specify { expect(exercise_those_that).to eq '' }
-  #   end
-  # end
+    context 'defensive coding' do
+      let(:move) { nil }
+      specify { expect(exercise_those_that).to eq '' }
+    end
+  end
 
-  # describe '#describe' do
-  #   subject(:description) { tree_of_life.describe(species) }
+  describe '#describe' do
+    subject(:description) { tree_of_life.describe(species) }
 
-  #   context 'matching' do
-  #     let(:species) { 'histioteuthis eltaninae' }
-  #     specify do
-  #       expect(description).to eq 'The Giant squid (histioteuthis eltaninae) ' \
-  #                                 'eats plankton and swims'
-  #     end
-  #   end
+    context 'matching' do
+      let(:species) { 'histioteuthis eltaninae' }
+      specify do
+        expect(description).to eq 'The Giant squid (histioteuthis eltaninae) ' \
+                                  'eats plankton and swims'
+      end
+    end
 
-  #   context 'no matching' do
-  #     let(:species) { 'humanicas dropkickus' }
-  #     specify do
-  #       result = 'The species humanicas dropkickus does not exist'
-  #       expect(description).to eq result
-  #     end
-  #   end
+    context 'no matching' do
+      let(:species) { 'humanicas dropkickus' }
+      specify do
+        result = 'The species humanicas dropkickus does not exist'
+        expect(description).to eq result
+      end
+    end
 
-  #   context 'defensive coding' do
-  #     let(:species) { nil }
-  #     specify { expect(description).to eq '' }
-  #   end
-  # end
+    context 'defensive coding' do
+      let(:species) { nil }
+      specify { expect(description).to eq '' }
+    end
+  end
 end
