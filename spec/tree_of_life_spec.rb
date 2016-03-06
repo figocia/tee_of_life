@@ -36,29 +36,29 @@ describe TreeOfLife do
     end
   end
 
-  # describe '#all_that_eat' do
-  #   subject(:all_that_eat) { tree_of_life.all_that_eat(food) }
+  describe '#all_that_eat' do
+    subject(:all_that_eat) { tree_of_life.all_that_eat(food) }
 
-  #   context 'multiple matching' do
-  #     let(:food) { 'flies' }
-  #     specify do
-  #       expect(all_that_eat.length).to eq 2
-  #       names = all_that_eat.map{|hash| hash[:name]}
-  #       expect(names).to include 'American Jumping Spider'
-  #       expect(names).to include 'Dracula Ant'
-  #     end
-  #   end
+    context 'multiple matching' do
+      let(:food) { 'flies' }
+      specify do
+        expect(all_that_eat.length).to eq 2        
+        names = all_that_eat.map{|life| life.name}
+        expect(names).to include 'American Jumping Spider'
+        expect(names).to include 'Dracula Ant'
+      end
+    end
 
-  #   context 'no matching' do
-  #     let(:food) { 'burgers' }
-  #     specify { expect(all_that_eat.length).to eq 0 }
-  #   end
+    context 'no matching' do
+      let(:food) { 'burgers' }
+      specify { expect(all_that_eat.length).to eq 0 }
+    end
 
-  #   context 'defensive coding' do
-  #     let(:food) { nil }
-  #     specify { expect(all_that_eat.length).to eq 0 }
-  #   end
-  # end
+    context 'defensive coding' do
+      let(:food) { nil }
+      specify { expect(all_that_eat.length).to eq 0 }
+    end
+  end
 
   # describe '#exercise_those_that' do
   #   subject(:exercise_those_that) { tree_of_life.exercise_those_that(move) }

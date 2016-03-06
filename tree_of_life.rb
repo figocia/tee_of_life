@@ -15,22 +15,17 @@ class TreeOfLife
     end
   end
 
-  # def in_group(group)
-  #   return [] if group.nil? || group == ''
-  #   matching_files = files.select{ |file| file.downcase.split('/').include?(group.downcase) }
-  #   matching_files.map{|file| file_to_hash(file)}
-  # end
 
   def in_group(group)
-    return [] if group.nil?
-    lifes.select{|life| life.group.include?(group.downcase)}
-    
+    return [] if group.nil? || group == ''
+    lifes.select{|life| life.group.include?(group.downcase)}    
   end
 
   def all_that_eat(food)
     return [] if food.nil? || food == ''
-    files.map{|file| file_to_hash(file)}.select{|hash| hash[:eats].downcase == food.downcase}
+    lifes.select{|life| life.eats.downcase == food.downcase }
   end
+
 
   def exercise_those_that(move)
     return '' if move.nil? || move == ''
